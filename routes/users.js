@@ -8,6 +8,7 @@ var User = require("../models/StudentUser.js");
 router.post("/studentRegister",(req,res) =>
 {
     // const {username,password,phone_no,student_id,dob,school,batch }= req.body;
+    console.log(req.body);
     let errors = [];
     if(!req.body.student_id || !req.body.username || !req.body.password || !req.body.phone_no || !req.body.dob || !req.body.school || !req.body.batch ){
     errors.push({msg:"Please fill in all fields."});
