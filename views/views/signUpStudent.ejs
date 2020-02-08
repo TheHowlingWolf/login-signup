@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<div lang="en">
+<head>
+  <title>Bootstrap 4 Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Merriweather&display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css?family=Alegreya&display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css?family=Philosopher&display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css?family=Cantata+One&display=swap" rel="stylesheet"> 
+  <style>
+  html {
+    height:100%;
+  }
+  
+  body {
+    margin:0;
+  }
+  
+  .bg {
+    animation:slide 3s ease-in-out infinite alternate;
+    background-image: linear-gradient(-60deg, #6c3 50%, #09f 50%);
+    bottom:0;
+    left:-50%;
+    opacity:.5;
+    position:fixed;
+    right:-50%;
+    top:0;
+    z-index:-1;
+  }
+  
+  .bg2 {
+    animation-direction:alternate-reverse;
+    animation-duration:4s;
+  }
+  
+  .bg3 {
+    animation-duration:5s;
+  }
+  @keyframes slide {
+  0% {
+    transform:translateX(-25%);
+  }
+  100% {
+    transform:translateX(25%);
+  }
+  }
+ /* Split the screen in half */
+ .split {
+  height: 100%;
+  width:40%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+/* Control the left side */
+.left {
+  left: 3%;
+  top: 5%;
+  font-family: 'Cantata One', serif;
+  font-size:20px;
+  width:780px;
+}
+
+/* Control the right side */
+.right {
+  right: 0;
+  background-color:rgba(255,255,255,.8);
+  border-radius:.25em;
+  box-shadow:0 0 .25em rgba(0,0,0,.25);
+  width:500px;
+  height:691px;
+  margin-top:58px;
+}
+
+/* If you want the content centered horizontally and vertically */
+.centered {
+  position: absolute;
+  top: 40%;
+  left: 70%;
+  transform: translate(-50%, -50%);
+  text-align: left;
+  width:600px;
+  height:500px;
+  line-height: 80%;
+  padding-left:20px;
+}
+
+/* Style the image inside the centered container, if needed */
+.centered img {
+  width: 150px;
+  border-radius: 50%;
+} 
+.form-group
+{
+    padding-left:15px;
+    padding-right: 5px;;
+    font-family: 'Cantata One', serif;
+    
+    
+}
+.navbar-custom
+{
+    background-color:darkslateblue;
+}
+.first
+{
+    padding-top: 10px;
+    padding-bottom:20px;
+}
+.description
+{
+  padding-top:35px;
+ 
+}
+.space
+{
+  padding-right:3px;
+}
+.maximum
+{
+  font-size:35px;
+  color:darkslateblue;
+  text-shadow: -1px 0 deepslateblue, 0 1px deepslateblue, 1px 0 deepslateblue, 0 -1px deepslateblue;
+}
+
+.shift
+{
+  position:relative;
+  justify-content: left;
+  align-items:left;
+  width:750px;
+}
+#profile
+{
+  font-family: 'Cantata One', serif;
+  font-size:25px;
+  padding-left:120px;
+  padding-top:60px;
+  color:darkslateblue;
+  
+}
+.btn
+{
+  text-shadow: beige;
+    font-family:'Cantata One', serif ;
+    color: white;
+    padding: 10px 30px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    font-size: 15px;
+    background-color:seagreen;
+}
+</style>
+  
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-sm navbar-custom">
+        <a class="navbar-brand" href="#">
+            <img src="bird.jpg" alt="Logo" style="width:40px;">
+          </a>
+        
+      </nav>
+    <div class="bg"></div>
+    <div class="bg bg2"></div>
+    <div class="bg bg3"></div>
+    <div class="split left">
+        <div class="justify-content-center align-items-center container">
+          
+        <div class="centered">
+          <div class="shift">
+            <img src="https://img.icons8.com/doodle/48/000000/quora.png" alt=" "><span class="maximum">  Digital Board</span></div>
+          <div class="description"><p>Digital Board is a one of a kind cross-</p></div>
+          <p>interactive platform that helps connect</p>
+          <p>students, teachers, and parents through</p>
+          <p>communities representing various schools</p>
+          <p>across different regions, and the batches</p>
+          <p>operating under the respective schools. </p>
+        </div>
+        </div>
+      </div>
+      <div class="split right">
+        <div class="signup d-flex">
+            <form action="/users/studentRegister" method="POST" enctype="multipart/form-data">
+              <%- include('./partials/messages.ejs'); %>
+                <div class="first">
+                    <span id="profile">Student Profile >></span></div>
+                  
+                    
+                    <div class="form-group row">
+                      <label for="inputUserName" class="space col-sm-3 col-form-label">Username  </label><br><br>
+                      <div class="col-sm-9">
+                        <input type="username" class="form-control" id="inputUserName" name="inputUserName"placeholder="Enter Username">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="inputPassword3" class="col-sm-3 col-form-label">Password </label><br><br>
+                      <div class="col-sm-9">
+                        <input type="password" class="form-control" id="inputPassword3" name="inputPassword3" placeholder="Enter Password">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="inputStudentID" class="space col-sm-3 col-form-label">Student ID  </label><br><br>
+                      <div class="col-sm-9">
+                        <input type="number" class="form-control" id="inputStudentID"  name="inputStudentID" placeholder="Enter Student ID">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="inputPhone" class="col-sm-4 col-form-label">Phone Number</label>
+                      
+                      <div class="col-sm-8">
+                          <div class="input-group mb-2">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text">+91</span>
+                              </div>
+                      <input type="number" id="InputPhoneNo" name="InputPhoneNo" class="form-control" placeholder="Enter Phone Number">
+                      </div>
+                    </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="inputDob" class="col-sm-4 col-form-label">Date of Birth </label>
+                      <div class="col-sm-8">
+                        <input type="date" class="form-control" id="inputDob" name="inputDob">
+                      </div>
+                    </div>
+             
+              
+              
+              <div class="form-group row">
+                <label for="inputSchool"  class="col-sm-3 col-form-label">School </label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="inputSchoolName" name="inputSchoolName" placeholder="Enter School name">
+                </div>
+              </div>
+                    <div class="form-group row">
+                      <label for="inputBatch"  class="col-sm-3 col-form-label">Batch </label>
+                        <div class="col-sm-9">
+                          <input type="number" class="form-control" id="inputBatchName" name="inputBatchName" placeholder="Enter Batch">
+                        </div>
+                      </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  
+                </div>
+                <div class="form-group col-md-3">
+                  
+                </div>
+                
+                <div class="form-group col-md-3" style="padding-right: 8px;">
+                  <button type="submit" class="btn btn-outline-success btn-sm">Submit</button>
+                </div>
+              </div>
+            </form>
+            
+            </div>
+      </div>
+      <!-- <script>
+        var isClicked = false;
+            $('.btn').on('click', function(){
+                isClicked = true;
+                window.location.href="http://localhost:5000/dashboard";
+                });
+      </script>
+     -->
+  </body>
