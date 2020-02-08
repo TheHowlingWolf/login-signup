@@ -4,14 +4,16 @@ var mongoose=require("mongoose");
 var flash = require("connect-flash");
 var session = require("express-session");
 var passport = require("passport");
-app.set("view engine","ejs");
 
 //Bodyparser
 app.use(express.urlencoded({extended: false}));
 mongoose.connect('mongodb+srv://dbUser:dbUser@mern-mga4p.mongodb.net/test?retryWrites=true&w=majority',{useNewUrlParser: true,
-    useUnifiedTopology: true})
+useUnifiedTopology: true})
 .then(() => console.log("MongoDB Connected.."))
 .catch(err => console.log(err));
+
+app.set("view engine","ejs");
+
 app.get("/",function(req,res)
 {
     res.render("../views/homepage");
