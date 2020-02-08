@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Digital Board</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Cantata+One&display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:600&display=swap" rel="stylesheet"> 
+  
+  <style>
+  html {
+    height:100%;
+  }
+  
+  .container {
+  width: 100%;
+  height: 100%;
+}
+ .bg {
+    animation:slide 3s ease-in-out infinite alternate;
+    background-image: linear-gradient(-60deg, #6c3 50%, #09f 50%);
+    bottom:0;
+    left:-50%;
+    opacity:.5;
+    position:fixed;
+    right:-50%;
+    top:0;
+    z-index:-1;
+  }
+  
+  .bg2 {
+    animation-direction:alternate-reverse;
+    animation-duration:4s;
+  }
+  
+  .bg3 {
+    animation-duration:5s;
+  }
+  @keyframes slide {
+  0% {
+    transform:translateX(-25%);
+  }
+  100% {
+    transform:translateX(25%);
+  }
+  }
+
+.navbar-custom
+{
+    background-color:darkslateblue;
+}
+.maximum
+{
+  font-size:35px;
+  color:darkslateblue;
+  text-shadow: -1px 0 deepslateblue, 0 1px deepslateblue, 1px 0 deepslateblue, 0 -1px deepslateblue;
+}
+.space
+{
+  padding-right:3px;
+}
+.box1
+ {
+        width: 400px;
+        height: 380px;
+        background-color:rgba(255,255,255,.8);
+        border-radius:.25em;
+        box-shadow:0 0 .25em rgba(0,0,0,.25);
+        position:relative; /*it can be fixed too*/
+        left:0; right:0;
+        top:20px; bottom:0;
+        margin:auto;
+
+        /*this to solve "the content will not be cut when the window is smaller than the content": */
+        max-width:100%;
+        max-height:100%;
+        overflow:auto;
+}
+.box1:hover
+{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+.box2
+{
+    width: 400px;
+        height: 380px;
+        background-color:rgba(255,255,255,.8);
+        border-radius:.25em;
+        box-shadow:0 0 .75em rgba(0,0,0,.25);
+        position:relative; /*it can be fixed too*/
+        left:0; right:0;
+        top:20px; bottom:0;
+        margin:auto;
+
+        /*this to solve "the content will not be cut when the window is smaller than the content": */
+        max-width:100%;
+        max-height:100%;
+        overflow:auto;
+}
+.box2:hover
+{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+.box3
+{
+    width: 400px;
+        height: 380px;
+        background-color:rgba(255,255,255,.8);
+        border-radius:.25em;
+        box-shadow:0 0 .25em rgba(0,0,0,.25);
+        position:relative; /*it can be fixed too*/
+        left:0; right:0;
+        top:20px; bottom:0;
+        margin:auto;
+
+        /*this to solve "the content will not be cut when the window is smaller than the content": */
+        max-width:100%;
+        max-height:100%;
+        overflow:auto;
+}
+.box3:hover
+{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+body {
+  width: 100%;
+  float: left;
+  height:100%;
+}
+.toppane {
+  width: 100%;
+  height: 200px;
+  border-collapse: collapse;
+}
+
+.leftpane,
+.middlepane,
+.rightpane{
+  width: 33.33%;
+  float: left;
+  height: 100%;
+}
+.description
+{
+    padding-top:20px;
+    padding-left: 550px;
+    padding-right: 220px;
+    padding-bottom: 20px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.231rem;
+    line-height: 1.538rem;
+    color:gray;
+}
+.text
+{
+    padding-top:20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.231rem;
+    line-height: 1.538rem;
+    color:gray;
+}
+.first
+{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    background-color: #4CAF50;
+    font-size: 20px;
+    color: white;
+    text-shadow: beige;
+    font-family: 'Open Sans', sans-serif;
+    padding: 10px 30px;
+
+}
+.first:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+.space{
+    padding-top:25px;
+}
+ #whatis
+{
+   
+   padding-left: 295px;
+   padding-right:230px;
+   font-size: 20px;
+    color: black;
+    position: relative;
+    
+    text-shadow: beige;
+    font-family: 'Open Sans', sans-serif;
+} 
+
+</style>
+  
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-sm navbar-custom">
+        <a class="navbar-brand" href="#">
+            <img src="bird.jpg" alt="Logo" style="width:40px;">
+          </a>
+        
+      </nav>
+    <div class="bg"></div>
+    <div class="bg bg2"></div>
+    <div class="bg bg3"></div>
+    <div class="toppane"><div class="description"><img src="https://img.icons8.com/doodle/48/000000/quora.png" alt=" "><span class="maximum">  Digital Board</span></div>
+    <div id="whatis">Digital Board is a one of a kind cross
+    interactive platform that helps connect
+    students, teachers, and parents through
+    communities representing various schools
+    across different regions, and the batches
+    operating under the respective schools.</div>
+    </div>
+    <div class="leftpane"><div class="box1"><div class="text">
+    <h1 style="color: black;">For Students</h1>
+    <p style="padding-top: 10px;">This is for students who study in different schools gyvgvvv xxtrxy jhgi uhn dxrezre nkjnn xrxx tcycv gh xwz tvjbj jbnjjn j vguvuj siovhuosn voavnd sfiwehy bvnskvnkj njd.</p> 
+    <button type="submit"  class="first btn btn-sm" >Login</button>
+    <p class="space">Don't have an account?<a href="#" style="color:#4CAF50" id="Student"> Sign Up>></a></p>
+    </div>
+    </div>
+    </div>
+    <div class="middlepane"><div class="box2"><div class="text">
+        <h1 style="color: black;">For Parents</h1>
+        <p style="padding-top: 10px;">This is for parents who study in different schools gyvgvvv xxtrxy jhgi uhn dxrezre nkjnn xrxx tcycv gh xwz tvjbj jbnjjn j vguvuj siovhuosn voavnd sfiwehy bvnskvnkj njd.</p> 
+        <button type="submit"  class="first btn btn-sm" >Login</button>
+        <p class="space">Don't have an account?<a href="#" style="color:#4CAF50" id="Parent"> Sign Up>></a></p>
+        </div></div></div>
+    <div class="rightpane"><div class="box3"><div class="text">
+        <h1 style="color: black;">For Teachers</h1>
+        <p style="padding-top: 10px;">This is for teachers who study in different schools gyvgvvv xxtrxy jhgi uhn dxrezre nkjnn xrxx tcycv gh xwz tvjbj jbnjjn j vguvuj siovhuosn voavnd sfiwehy bvnskvnkj njd.</p> 
+        <button type="submit"  class="first btn btn-sm">Login</button>
+        <p class="space">Don't have an account?<a href="#" style="color:#4CAF50" id="Teacher"> Sign Up>></a></p>
+        </div></div></div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script>
+ 
+            var isClicked = false;
+            $('#Student').on('click', function(){
+                isClicked = true;
+                window.location.href="http://localhost:5000/studentRegister";
+                });
+                $('#Parent').on('click', function(){
+                isClicked = true;
+                window.location.href="http://localhost:5000/parentRegister";
+                });
+                $('#Teacher').on('click', function(){
+                isClicked = true;
+                window.location.href="http://localhost:5000/teacherRegister";
+                });
+                $('.first').on('click', function(){
+                isClicked = true;
+                window.location.href="http://localhost:5000/login";
+                });
+
+   
+
+             
+    
+    </script> 
+        </body>
+        </html>

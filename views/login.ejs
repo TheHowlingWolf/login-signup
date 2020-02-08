@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Digital Board</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script> 
+  <link href="https://fonts.googleapis.com/css?family=Cantata+One&display=swap" rel="stylesheet"> 
+  <style>
+  html {
+    height:100%;
+  }
+  
+  body {
+    margin:0;
+  }
+  .navbar-custom
+  {
+      background-color:darkslateblue;
+  }
+  .bg {
+    animation:slide 3s ease-in-out infinite alternate;
+    background-image: linear-gradient(-60deg, #6c3 50%, #09f 50%);
+    bottom:0;
+    left:-50%;
+    opacity:.5;
+    position:fixed;
+    right:-50%;
+    top:0;
+    z-index:-1;
+  }
+  
+  .bg2 {
+    animation-direction:alternate-reverse;
+    animation-duration:4s;
+  }
+  
+  .bg3 {
+    animation-duration:5s;
+  }
+  @keyframes slide {
+  0% {
+    transform:translateX(-25%);
+  }
+  100% {
+    transform:translateX(25%);
+  }
+  }
+  .container {
+  background-color:rgba(255,255,255,.8);
+  border-radius:.25em;
+  box-shadow:0 0 .25em rgba(0,0,0,.25);
+  box-sizing:border-box;
+  left:50%;
+  top:50%;
+  padding:10vmin;
+  position:fixed;
+  text-align:center;
+  width:600px;
+  height:320px;
+  transform:translate(-50%, -50%);
+  font-family: 'Cantata One', serif;
+    
+}
+#maximum
+{
+    font-size:35px;
+  color:darkslateblue;
+  text-shadow: -1px 0 deepslateblue, 0 1px deepslateblue, 1px 0 deepslateblue, 0 -1px deepslateblue;
+  padding-bottom:20px;
+  
+}
+#down
+{
+    padding-bottom: 5px;
+}
+form{
+    text-align: top;
+    padding-top:10px;
+}
+</style>
+  
+</head>
+<body>
+  <nav class="navbar navbar-expand-sm navbar-custom">
+      <a class="navbar-brand" href="#">
+          <img src="bird.jpg" alt="Logo" style="width:40px;">
+        </a>
+      
+    </nav>
+  <div class="bg"></div>
+  <div class="bg bg2"></div>
+  <div class="bg bg3"></div>
+  <div class="container">
+      <form action="/users/login" method="POST">
+        <div id="maximum">  Digital Board</div>
+        
+        
+        <div class="form-group row">
+            <label for="inputUserName" class="space col-sm-3 col-form-label">Username  </label><br><br>
+            <div class="col-sm-9">
+              <input type="username" class="form-control" id="inputUserName" placeholder="Enter Username">
+            </div>
+          </div>
+          <div class="form-group row" id="down">
+            <label for="inputPassword3" class="col-sm-3 col-form-label">Password </label><br><br>
+            <div class="col-sm-9">
+              <input type="password" class="form-control" id="inputPassword3" placeholder="Enter Password">
+            </div>
+          </div>
+          <div class="form-group row">
+          <div class="form-group col-md-5">
+                  
+          </div>
+          <div class="form-group col-md-3">
+            <button type="submit" class="btn btn-outline-success btn-sm">Submit</button>
+          </div>
+          
+          <div class="form-group col-md-4">
+            
+          </div>
+        </div>
+      </form>
+  </div>
+  </body>
