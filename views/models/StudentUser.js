@@ -4,7 +4,8 @@ var passportLocalMongoose= require("passport-local-mongoose");
 var StudentUserSchema = new mongoose.Schema({
     username:{
         type: String,
-        required: true
+        required: true,
+        unique:true
 
     },
     password:{
@@ -17,8 +18,9 @@ var StudentUserSchema = new mongoose.Schema({
         required:true
     },
     phone_no:{
-        type: String,
-        required: true
+        type: Number,
+        required: true,
+        unique: true
 
     },
     dob:{
@@ -31,7 +33,7 @@ var StudentUserSchema = new mongoose.Schema({
         required: true
     },
     batch:{
-        type: String,
+        type: Number,
         required: true
     }
 });
