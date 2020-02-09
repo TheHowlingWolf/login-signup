@@ -37,7 +37,7 @@ app.get("/users/login",function(req,res)
     res.render("../views/login");
 });
 app.get("/dashboard",function(req,res){
-    res.render("../views/dashboard");
+    res.render("../views/dashboard",{layout:"layoutHomepage"});
 });
 //Bodyparser
 app.use(express.urlencoded({extended: false}));
