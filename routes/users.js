@@ -1,76 +1,86 @@
 var express = require("express");
+const expressLayouts = require("express-ejs-layouts");
 var bcrypt = require("bcryptjs");
 var router = express.Router();
 var passport = require("passport");
 
+router.use(expressLayouts);
+
+
 //User model
-var User = require("../models/StudentUser.js");
+const User = require("../models/StudentUser");
+
 router.post("/studentRegister",(req,res) =>
 {
-    // const {username,password,phone_no,student_id,dob,school,batch }= req.body;
-    console.log(req.body);
+    
+    const username= req.body.inputUserName;
+    const password= req.body.inputPassword3;
+    const student_id= req.body.inputStudentID;
+    const phone_no= req.body.InputPhoneNo;
+     const dob= req.body.inputDob;
+     const school= req.body.inputSchoolName;
+     const batch = req.body.inputBatchName;
+
     let errors = [];
-    if(!req.body.inputUserName){// || !req.body.inputPassword3|| !req.body.inputPhoneNo|| !req.body.inputStudentID || !req.body.inputDob || !req.body.inputSchoolName || !req.body.inputBatchName){
+    if(!username){// || !req.body.inputPassword3|| !req.body.phone_no|| !req.body.student_id || !req.body.dob || !req.body.school || !req.body.batch){
     errors.push({msg:"Please fill in all fields."});
     }
-    if(!req.body.inputPassword3)
+    if(!password)
     {
         errors.push({msg:"password"});
     }
-    if(!req.body.inputPhoneNo)
+    if(!phone_no)
     {
         errors.push({msg:"phoneno"});
     }
-    if(!req.body.inputStudentID)
+    if(!student_id)
     {
         errors.push({msg:"id"});
     }
-    if(!req.body.inputDob)
+    if(!dob)
     {
         errors.push({msg:"dob"});
     }
-    if(!req.body.inputSchoolName)
+    if(!school)
     {
         errors.push({msg:"school"});
     }
-    if(!req.body.inputBatchName)
+    if(!batch)
     {
         errors.push({msg:"batch"});
     }
     if(errors.length>0)
     {
-        res.render("../views/signupStudent.ejs",{
+
+            res.render("../views/signUpStudent.ejs",{
             errors,
-            inputUserName: req.body.inputUserName,
-            inputPassword3: req.body.inputPassword3,
-            inputPhoneNo: req.body.inputPhoneNo,
-            inputStudentID: req.body.inputStudentID,
-            inputDob: req.body.inputDob,
-            inputSchoolName: req.body.inputSchoolName,
-            inputBatchName: req.body.inputBatchName
-        });
+            username: username,
+            password: password,
+            phone_no: phone_no,
+            student_id: student_id,
+            dob: dob,
+            school: school,
+            batch: batch
+        }); 
     }
     else{
-        var newUser = {
-            inputUserName: req.body.inputUserName,
-            inputPassword3: req.body.inputPassword3,
-            inputPhoneNo: req.body.inputPhoneNo,
-            inputStudentID: req.body.inputStudentID,
-            inputDob: req.body.inputDob,
-            inputSchoolName: req.body.inputSchoolName,
-            inputBatchName: req.body.inputBatchName
-            
-        };
-       newUser.save(function(err)
-       {
-           if(err){
-               console.log(err);
-           }
-           else
-           {
-            res.redirect("../views/dashboard.ejs");
+        const newUser = new User({
+            username,
+            password,
+            student_id,
+            phone_no,
+            dob,
+            school,
+            batch
+        });
+        
+       newUser.save().then((user)=>{
+           console.log(user);
+            res.redirect("/dashboard");
            console.log("success");
-           }
+       })
+       .catch((err)=>{
+        console.log(err);
        });
 
         

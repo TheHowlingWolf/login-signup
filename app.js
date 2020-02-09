@@ -1,5 +1,5 @@
 var express = require("express");
-
+const expressLayouts = require("express-ejs-layouts");
 var mongoose=require("mongoose");
 var flash = require("connect-flash");
 var session = require("express-session");
@@ -13,24 +13,26 @@ mongoose.connect('mongodb+srv://dbUser:dbUser@mern-mga4p.mongodb.net/test?retryW
     useUnifiedTopology: true})
 .then(() => console.log("MongoDB Connected.."))
 .catch(err => console.log(err));
+
+app.use(expressLayouts);
 app.set("view engine","ejs");
 app.get("/",function(req,res)
 {
-    res.render("../views/homepage");
+    res.render("../views/homepage",{layout:"layoutHomepage"});
 });
-app.get("/studentRegister",function(req,res)
+app.get("/users/studentRegister",function(req,res)
 {
-    res.render("../views/signupStudent");
+    res.render("../views/signupStudent",{layout:"layoutSignUp"});
 });
-app.get("/parentRegister",function(req,res)
+app.get("/users/parentRegister",function(req,res)
 {
     res.render("../views/signupParent");
 });
-app.get("/teacherRegister",function(req,res)
+app.get("/users/teacherRegister",function(req,res)
 {
     res.render("../views/signupTeacher");
 });
-app.get("/login",function(req,res)
+app.get("/users/login",function(req,res)
 {
     res.render("../views/login");
 });
