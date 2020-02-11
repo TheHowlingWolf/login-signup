@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<div lang="en">
+<html lang="en">
 <head>
   <title>Digital Board</title>
   <meta charset="utf-8">
@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script> 
   <link href="https://fonts.googleapis.com/css?family=Cantata+One&display=swap" rel="stylesheet"> 
   <style>
   html {
@@ -17,7 +17,10 @@
   body {
     margin:0;
   }
-  
+  .navbar-custom
+  {
+      background-color:darkslateblue;
+  }
   .bg {
     animation:slide 3s ease-in-out infinite alternate;
     background-image: linear-gradient(-60deg, #6c3 50%, #09f 50%);
@@ -46,118 +49,41 @@
     transform:translateX(25%);
   }
   }
- /* Split the screen in half */
- .split {
-  height: 100%;
-  width:40%;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  overflow-x: hidden;
-  padding-top: 20px;
-}
-
-/* Control the left side */
-.left {
-  left: 3%;
-  top: 5%;
-  font-family: 'Cantata One', serif;
-  font-size:20px;
-  width:780px;
-}
-
-/* Control the right side */
-.right {
-  right: 0;
+  .container {
   background-color:rgba(255,255,255,.8);
   border-radius:.25em;
   box-shadow:0 0 .25em rgba(0,0,0,.25);
-  width:500px;
-  height:691px;
-  margin-top:58px;
-}
-
-/* If you want the content centered horizontally and vertically */
-.centered {
-  position: absolute;
-  top: 40%;
-  left: 70%;
-  transform: translate(-50%, -50%);
-  text-align: left;
+  box-sizing:border-box;
+  left:50%;
+  top:50%;
+  padding:10vmin;
+  position:fixed;
+  text-align:center;
   width:600px;
-  height:500px;
-  line-height: 80%;
-  padding-left:20px;
-}
-
-/* Style the image inside the centered container, if needed */
-.centered img {
-  width: 150px;
-  border-radius: 50%;
-} 
-.form-group
-{
-    padding-left:15px;
-    padding-right: 5px;;
-    font-family: 'Cantata One', serif;
-    
+  height:320px;
+  transform:translate(-50%, -50%);
+  font-family: 'Cantata One', serif;
     
 }
-.navbar-custom
+#maximum
 {
-    background-color:darkslateblue;
-}
-.first
-{
-    padding-top: 10px;
-    padding-bottom:20px;
-}
-.description
-{
-  padding-top:35px;
- 
-}
-.space
-{
-  padding-right:3px;
-}
-.maximum
-{
-  font-size:35px;
+    font-size:35px;
   color:darkslateblue;
   text-shadow: -1px 0 deepslateblue, 0 1px deepslateblue, 1px 0 deepslateblue, 0 -1px deepslateblue;
-}
-
-.shift
-{
-  position:relative;
-  justify-content: left;
-  align-items:left;
-  width:750px;
-}
-#profile
-{
-  font-family: 'Cantata One', serif;
-  font-size:25px;
-  padding-left:120px;
-  padding-top:60px;
-  color:darkslateblue;
+  padding-bottom:20px;
   
 }
-.btn
+#down
 {
-  text-shadow: beige;
-    font-family:'Cantata One', serif ;
-    color: white;
-    padding: 10px 30px;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-    font-size: 15px;
-    background-color:seagreen;
+    padding-bottom: 5px;
+}
+form{
+    text-align: top;
+    padding-top:10px;
 }
 </style>
-  
-  </head>
-  <body>
+</head>
+<body>
     <%- body %>
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -176,4 +102,3 @@
     ></script>
   </body>
 </html>
-

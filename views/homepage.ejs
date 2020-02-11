@@ -27,13 +27,13 @@
     <div class="middlepane"><div class="box2"><div class="text">
         <h1 style="color: black;">For Parents</h1>
         <p style="padding-top: 10px;">This is for parents who study in different schools gyvgvvv xxtrxy jhgi uhn dxrezre nkjnn xrxx tcycv gh xwz tvjbj jbnjjn j vguvuj siovhuosn voavnd sfiwehy bvnskvnkj njd.</p> 
-        <button type="submit"  class="first btn btn-sm" >Login</button>
+        <button type="submit"  class="second btn btn-sm" >Login</button>
         <p class="space">Don't have an account?<a href="#" style="color:#4CAF50" id="Parent"> Sign Up>></a></p>
         </div></div></div>
     <div class="rightpane"><div class="box3"><div class="text">
         <h1 style="color: black;">For Teachers</h1>
         <p style="padding-top: 10px;">This is for teachers who study in different schools gyvgvvv xxtrxy jhgi uhn dxrezre nkjnn xrxx tcycv gh xwz tvjbj jbnjjn j vguvuj siovhuosn voavnd sfiwehy bvnskvnkj njd.</p> 
-        <button type="submit"  class="first btn btn-sm">Login</button>
+        <button type="submit"  class="third btn btn-sm">Login</button>
         <p class="space">Don't have an account?<a href="#" style="color:#4CAF50" id="Teacher"> Sign Up>></a></p>
         </div></div></div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -46,15 +46,23 @@
                 });
                 $('#Parent').on('click', function(){
                 isClicked = true;
-                window.location.href="http://localhost:5000/users/parentRegister";
+                window.location.href="http://localhost:5000/usersP/parentRegister";
                 });
                 $('#Teacher').on('click', function(){
                 isClicked = true;
-                window.location.href="http://localhost:5000/users/teacherRegister";
+                window.location.href="http://localhost:5000/usersT/teacherRegister";
                 });
                 $('.first').on('click', function(){
                 isClicked = true;
-                window.location.href="http://localhost:5000/login";
+                window.location.href="http://localhost:5000/users/login";
+                });
+                $('.second').on('click', function(){
+                isClicked = true;
+                window.location.href="http://localhost:5000/usersP/login";
+                });
+                $('.third').on('click', function(){
+                isClicked = true;
+                window.location.href="http://localhost:5000/usersP/login";
                 });
   </script>
 

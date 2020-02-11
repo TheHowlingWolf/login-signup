@@ -22,23 +22,17 @@ app.get("/",function(req,res)
 });
 app.get("/users/studentRegister",function(req,res)
 {
-    res.render("../views/signupStudent",{layout:"layoutSignUp"});
+    res.render("../views/signUpStudent",{layout:"layoutSignUp"});
 });
-app.get("/users/parentRegister",function(req,res)
-{
-    res.render("../views/signupParent");
-});
-app.get("/users/teacherRegister",function(req,res)
-{
-    res.render("../views/signupTeacher");
-});
+
 app.get("/users/login",function(req,res)
 {
-    res.render("../views/login");
+    res.render("../views/login",{layout:"layoutLogin"});
 });
 app.get("/dashboard",function(req,res){
     res.render("../views/dashboard",{layout:"layoutHomepage"});
 });
+
 //Bodyparser
 app.use(express.urlencoded({extended: false}));
 
@@ -53,18 +47,22 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+require("./config/passportStudent.js")(passport);
+
+
   //Connect flash
   app.use(flash());
 
   //Global variables
   app.use(function(req,res,next) {
-    //   res.locals.success_msg = req.flash("success_msg");
-    //  res.locals.error_msg = req.flash("error_msg");
+    //res.locals.success_msg = req.flash("success_msg");
+    //res.locals.error_msg = req.flash("error_msg");
      res.locals.error= req.flash("error");
      next();
   });
 app.use('/users',require("./routes/users.js"));
+
 app.listen(5000,function()
 {
-    console.log("server satrted on port 5000.");
+    console.log("server started on port 5000.");
 });
