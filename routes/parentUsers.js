@@ -9,6 +9,7 @@ router.use(expressLayouts);
 
 //User model
 const ParentUser = require("../models/ParentUser");
+const masterUser = require("../models/masterUser");
 router.post("/parentRegister",(req,res) =>
 {
     
@@ -101,19 +102,46 @@ router.post("/parentRegister",(req,res) =>
             school,
             batch
         });
+        const newMasterUser = new masterUser({
+            username,
+            password,
+            student_id,
+            phone_no,
+            dob,
+            school,
+            batch
+        });
         //hash password
-        bcrypt.genSalt(10,(err,salt) =>
-        bcrypt.hash(newUser.password,salt,(err,hash) =>{
+    //     bcrypt.genSalt(10,(err,salt) =>
+    //     bcrypt.hash(newUser.password,salt,(err,hash) =>{
+    //        if(err) throw err;
+    //        //Set password to hashed
+    //        newUser.password = hash;
+    //    newUser.save().then((user)=>{
+    //        console.log(user);
+    //         res.redirect("/dashboard");
+    //        console.log("success");
+    //    })
+    //    .catch((err)=>
+    //     console.log(err));
+
+        
+    // }));
+    bcrypt.genSalt(10,(err,salt) =>
+        bcrypt.hash(newMasterUser.password,salt,(err,hash) =>{
            if(err) throw err;
            //Set password to hashed
-           newUser.password = hash;
-       newUser.save().then((user)=>{
+           newMasterUser.password = hash;
+       newMasterUser.save().then((user)=>{
            console.log(user);
-            res.redirect("/dashboard");
-           console.log("success");
+           res.redirect("/dashboard");
+         console.log("success");
        })
        .catch((err)=>
         console.log(err));
+        newUser.save();
+        
+        
 
         
     }));
@@ -131,6 +159,8 @@ router.post("/login",(req,res,next) =>
         failureFlash: true
     })(req,res,next);
 });
+
+
 
 //Logout Handle
 // router.get("/logout",(req,res) =>{

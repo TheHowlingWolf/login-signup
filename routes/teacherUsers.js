@@ -9,6 +9,7 @@ router.use(expressLayouts);
 
 //User model
 const TeacherUser = require("../models/TeacherUser");
+const masterUser = require("../models/masterUser");
 router.post("/teacherRegister",(req,res) =>
 {
     
@@ -101,36 +102,65 @@ router.post("/teacherRegister",(req,res) =>
             school,
             batch
         });
-        //hash password
+            const newMasterUser = new masterUser({
+                username,
+                password,
+                student_id,
+                phone_no,
+                dob,
+                school,
+                batch
+            });
+            //hash password
+        //     bcrypt.genSalt(10,(err,salt) =>
+        //     bcrypt.hash(newUser.password,salt,(err,hash) =>{
+        //        if(err) throw err;
+        //        //Set password to hashed
+        //        newUser.password = hash;
+        //    newUser.save().then((user)=>{
+        //        console.log(user);
+        //         res.redirect("/dashboard");
+        //        console.log("success");
+        //    })
+        //    .catch((err)=>
+        //     console.log(err));
+    
+            
+        // }));
         bcrypt.genSalt(10,(err,salt) =>
-        bcrypt.hash(newUser.password,salt,(err,hash) =>{
-           if(err) throw err;
-           //Set password to hashed
-           newUser.password = hash;
-       newUser.save().then((user)=>{
-           console.log(user);
-            res.redirect("/dashboard");
-           console.log("success");
-       })
-       .catch((err)=>
-        console.log(err));
-
-        
-    }));
-}
-
-});
+            bcrypt.hash(newMasterUser.password,salt,(err,hash) =>{
+               if(err) throw err;
+               //Set password to hashed
+               newMasterUser.password = hash;
+           newMasterUser.save().then((user)=>{
+               console.log(user);
+               res.redirect("/dashboard");
+             console.log("success");
+           })
+           .catch((err)=>
+            console.log(err));
+            newUser.save();
+            
+            
+    
+            
+        }));
     }
-});
-//Login handle
-router.post("/login",(req,res,next) =>
-{
-    passport.authenticate("local",{
-        successRedirect: "/dashboard",//according to user profile
-        failureRedirect: "/usersT/login",
-        failureFlash: true
-    })(req,res,next);
-});
+    
+    });
+        }
+    });
+
+    
+    //Login handle
+    router.post("/login",(req,res,next) =>
+    {
+        passport.authenticate("local",{
+            successRedirect: "/dashboard",//according to user profile
+            failureRedirect: "/usersT/login",
+            failureFlash: true
+        })(req,res,next);
+    });
 
 //Logout Handle
 // router.get("/logout",(req,res) =>{

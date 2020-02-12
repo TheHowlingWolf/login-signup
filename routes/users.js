@@ -132,10 +132,13 @@ router.post("/studentRegister",(req,res) =>
            newMasterUser.password = hash;
        newMasterUser.save().then((user)=>{
            console.log(user);
+           res.redirect("/dashboard");
+         console.log("success");
        })
        .catch((err)=>
         console.log(err));
         newUser.save();
+        
         
 
         

@@ -63,8 +63,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 require("./config/passportStudent.js")(passport);
-require("./config/passportParent.js")(passport);
-require("./config/passportTeacher.js")(passport);
+// require("./config/passportParent.js")(passport);
+// require("./config/passportTeacher.js")(passport);
 
   //Connect flash
   app.use(flash());
