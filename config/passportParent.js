@@ -3,14 +3,13 @@ var mongoose = require("mongoose");
 var bcrypt = require("bcryptjs");
 
 //Load User model
-var User = require("../models/StudentUser");
-
+var ParentUser = require("../models/ParentUser");
 
 module.exports = function(passport) {
     passport.use(
-        new LocalStrategy({usernameField:"username"},(username,password,done) => {
+        new LocalStrategy({ usernameField: "username"}, (username,password,done) => {
            //Match user
-           User.findOne({ username:username})
+           ParentUser.findOne({ username:username})
            .then(user => {
                if(!user){
                    return done(null,false,{message:"That username is not registered."});
@@ -35,7 +34,7 @@ module.exports = function(passport) {
       });
     
       passport.deserializeUser(function(id, done) {
-        User.findById(id, function(err, user) {
+        ParentUser.findById(id, function(err, user) {
           done(err, user);
         });
       });

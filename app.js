@@ -24,10 +24,25 @@ app.get("/users/studentRegister",function(req,res)
 {
     res.render("../views/signUpStudent",{layout:"layoutSignUp"});
 });
-
+app.get("/usersP/parentRegister",function(req,res)
+{
+    res.render("../views/signupParent",{layout:"layoutSignUp"});
+});
+app.get("/usersT/teacherRegister",function(req,res)
+{
+    res.render("../views/signupTeacher",{layout:"layoutSignUp"});
+});
 app.get("/users/login",function(req,res)
 {
     res.render("../views/login",{layout:"layoutLogin"});
+});
+app.get("/usersP/login",function(req,res)
+{
+    res.render("../views/loginParent",{layout:"layoutLogin"});
+});
+app.get("/usersT/login",function(req,res)
+{
+    res.render("../views/loginTeacher",{layout:"layoutLogin"});
 });
 app.get("/dashboard",function(req,res){
     res.render("../views/dashboard",{layout:"layoutHomepage"});
@@ -48,7 +63,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 require("./config/passportStudent.js")(passport);
-
+require("./config/passportParent.js")(passport);
+require("./config/passportTeacher.js")(passport);
 
   //Connect flash
   app.use(flash());
@@ -61,7 +77,8 @@ require("./config/passportStudent.js")(passport);
      next();
   });
 app.use('/users',require("./routes/users.js"));
-
+app.use('/usersP',require("./routes/parentUsers.js"));
+app.use('/usersT',require("./routes/teacherUsers.js"));
 app.listen(5000,function()
 {
     console.log("server started on port 5000.");
