@@ -1,6 +1,15 @@
 var LocalStrategy = require("passport-local").Strategy;
 var mongoose = require("mongoose");
 var bcrypt = require("bcryptjs");
+var passport = require("passport");
+var urljoin = require("url-join");
+var express = require("express");
+var expressLayouts = require("express-ejs-layouts");
+var router = express.Router();
+
+router.use(expressLayouts);
+
+
 
 //Load User model
 var User = require("../models/masterUser");
@@ -31,13 +40,10 @@ module.exports = function(passport) {
         })
     );
     passport.serializeUser(function(user, done) {
-        done(null, user.id);
+        done(null, user.username);
       });
     
-      passport.deserializeUser(function(id, done) {
-        User.findById(id, function(err, user) {
-          done(err, user);
-        });
+      passport.deserializeUser((username, done) => {
+       done(null,{username:username});
       });
-    };
-
+    }

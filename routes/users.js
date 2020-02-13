@@ -3,6 +3,7 @@ const expressLayouts = require("express-ejs-layouts");
 var bcrypt = require("bcryptjs");
 var router = express.Router();
 var passport = require("passport");
+var urljoin = require("url-join");
 
 router.use(expressLayouts);
 
@@ -132,7 +133,7 @@ router.post("/studentRegister",(req,res) =>
            newMasterUser.password = hash;
        newMasterUser.save().then((user)=>{
            console.log(user);
-           res.redirect("/dashboard");
+           res.redirect("/users/login");
          console.log("success");
        })
        .catch((err)=>
@@ -148,16 +149,22 @@ router.post("/studentRegister",(req,res) =>
 });
     }
 });
-//Login handle
-router.post("/login",(req,res,next) =>
-{
-    passport.authenticate("local",{
-        successRedirect: "/dashboard",//according to user profile
-        failureRedirect: "/users/login",
-        failureFlash: true
-    })(req,res,next);
-});
 
+//Login handle
+router.post("/login",
+passport.authenticate("local",
+{
+    
+    successRedirect: "/users/dasboard/:name",
+    failureRedirect:"/users/login",
+    failureFlash:true
+}
+)
+);
+router.get("/users/dashboard/:name",function(req,res)
+{
+    res.render("../views/studentDashboard",{layout:"layoutStudent"},{username:req.user.username});
+});
 //Logout Handle
 // router.get("/logout",(req,res) =>{
 //     req.logout();

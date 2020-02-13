@@ -16,6 +16,7 @@ mongoose.connect('mongodb+srv://dbUser:dbUser@mern-mga4p.mongodb.net/test?retryW
 
 app.use(expressLayouts);
 app.set("view engine","ejs");
+app.use(express.static(__dirname+"/dashboard/:name"));
 app.get("/",function(req,res)
 {
     res.render("../views/homepage",{layout:"layoutHomepage"});
@@ -43,9 +44,6 @@ app.get("/usersP/login",function(req,res)
 app.get("/usersT/login",function(req,res)
 {
     res.render("../views/loginTeacher",{layout:"layoutLogin"});
-});
-app.get("/dashboard",function(req,res){
-    res.render("../views/dashboard",{layout:"layoutHomepage"});
 });
 
 //Bodyparser
