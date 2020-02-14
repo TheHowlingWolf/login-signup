@@ -1,5 +1,5 @@
 var mongoose = require("mongoose");
-var passportLocalMongoose= require("passport-local-mongoose");
+//var passportLocalMongoose= require("passport-local-mongoose");
 
 var ParentUserSchema = new mongoose.Schema({
     username:{
@@ -36,5 +36,5 @@ var ParentUserSchema = new mongoose.Schema({
         required: true
     }
 });
-ParentUserSchema.plugin(passportLocalMongoose);
+//ParentUserSchema.plugin(passportLocalMongoose);
 module.exports = ParentUser =  mongoose.model("ParentUser",ParentUserSchema);

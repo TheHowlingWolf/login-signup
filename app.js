@@ -4,6 +4,7 @@ var mongoose=require("mongoose");
 var flash = require("connect-flash");
 var session = require("express-session");
 var passport = require("passport");
+const {ensureAuthenticated} = require('./config/auth');
 var app = express();
 
 
@@ -55,7 +56,7 @@ app.use(session({
     resave: true,
     saveUninitialized: true
     
-  }));
+}));
 //Passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
@@ -64,9 +65,16 @@ require("./config/passportStudent.js")(passport);
 // require("./config/passportParent.js")(passport);
 // require("./config/passportTeacher.js")(passport);
 
-  //Connect flash
-  app.use(flash());
+//Connect flash
+app.use(flash());
 
+app.get('/dashboard', ensureAuthenticated ,(req,res)=>{
+    console.log(req.user.username);
+    res.render('dashboard',{
+        layout:"layoutStudent",
+        Fname:req.user.username
+    });
+});
   //Global variables
   app.use(function(req,res,next) {
     //res.locals.success_msg = req.flash("success_msg");

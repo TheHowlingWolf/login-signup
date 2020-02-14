@@ -151,20 +151,17 @@ router.post("/studentRegister",(req,res) =>
 });
 
 //Login handle
-router.post("/login",
+router.post("/login",(req,res,next)=>{
 passport.authenticate("local",
 {
     
-    successRedirect: "/users/dasboard/:name",
-    failureRedirect:"/users/login",
+    successRedirect: '/dashboard',
+    failureRedirect:'/users/login',
     failureFlash:true
 }
-)
-);
-router.get("/users/dashboard/:name",function(req,res)
-{
-    res.render("../views/studentDashboard",{layout:"layoutStudent"},{username:req.user.username});
+)(req,res,next);
 });
+
 //Logout Handle
 // router.get("/logout",(req,res) =>{
 //     req.logout();

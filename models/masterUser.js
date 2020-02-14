@@ -1,5 +1,5 @@
 var mongoose = require("mongoose");
-var passportLocalMongoose= require("passport-local-mongoose");
+//var passportLocalMongoose= require("passport-local-mongoose");
 
 var MasterUserSchema = new mongoose.Schema({
     username:{
@@ -36,5 +36,5 @@ var MasterUserSchema = new mongoose.Schema({
         required: true
     }
 });
-MasterUserSchema.plugin(passportLocalMongoose);
+//MasterUserSchema.plugin(passportLocalMongoose);
 module.exports = MasterUser =  mongoose.model("MasterUser",MasterUserSchema);
