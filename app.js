@@ -11,13 +11,13 @@ var app = express();
 //Bodyparser
 app.use(express.urlencoded({extended: false}));
 mongoose.connect('mongodb+srv://dbUser:dbUser@mern-mga4p.mongodb.net/test?retryWrites=true&w=majority',{useNewUrlParser: true,
-    useUnifiedTopology: true})
+useUnifiedTopology: true})
 .then(() => console.log("MongoDB Connected.."))
 .catch(err => console.log(err));
 
 app.use(expressLayouts);
 app.set("view engine","ejs");
-app.use(express.static(__dirname+"/dashboard/:name"));
+app.use(express.static(__dirname+"/dashboard"));
 app.get("/",function(req,res)
 {
     res.render("../views/homepage",{layout:"layoutHomepage"});
